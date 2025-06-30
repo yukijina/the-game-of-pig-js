@@ -13,17 +13,13 @@ const confettiEl = document.querySelector('.confetti');
 const player1El = document.querySelector('.player--0');
 const player2El = document.querySelector('.player--1');
 const img = document.querySelector('.img--dice');
-// let scoreEl1 = document.querySelector('#score--0');
-// let scoreEl2 = document.querySelector('#score--1');
-// let currentScoreBoard1 = document.getElementById('current-score--0');
-// let currentScoreBoard2 = document.getElementById('current-score--1');
 
 // New Game
 btnNew.addEventListener('click', function () {
   btnRoll.disabled = false;
   btnHold.disabled = false;
-  const playerEl = document.querySelector(`.player--${winner}`);
-  playerEl.classList.remove('player--winner');
+  const winnerEl = document.querySelector(`.player--${winner}`);
+  winnerEl.classList.remove('player--winner');
   confettiEl.classList.add('invisible');
 
   currentPlayer = 0;
@@ -54,9 +50,6 @@ const changePlayer = () => {
 
 // Click roll a dice button
 btnRoll.addEventListener('click', function () {
-  console.log(
-    `current player ${currentPlayer}, total ${scorePlayer1}, ${scorePlayer2}`
-  );
   // Roll a dice
   let dice = Math.trunc(Math.random() * 6) + 1;
 
