@@ -6,8 +6,8 @@ let currentPlayer = 0;
 let currentScore = 0;
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
-let scoreboard = document.querySelector(`#current-score--${currentPlayer}`);
-let totalScoreboard = document.querySelector(`#score--${currentPlayer}`);
+let scoreboardEl = document.querySelector(`#current-score--${currentPlayer}`);
+let totalScoreboardEl = document.querySelector(`#score--${currentPlayer}`);
 let winner;
 const confettiEl = document.querySelector('.confetti');
 const player1El = document.querySelector('.player--0');
@@ -30,7 +30,6 @@ btnNew.addEventListener('click', function () {
   currentScore = 0;
   scorePlayer1 = 0;
   scorePlayer2 = 0;
-  img.src = `./images/dice-1.png`;
 
   let scoreEl1 = document.querySelector('#score--0');
   let scoreEl2 = document.querySelector('#score--1');
@@ -41,7 +40,7 @@ btnNew.addEventListener('click', function () {
 const changePlayer = () => {
   // Reset current score
   currentScore = 0;
-  scoreboard.textContent = 0;
+  scoreboardEl.textContent = 0;
 
   // Change player & active background
   currentPlayer === 1 ? (currentPlayer = 0) : (currentPlayer = 1);
@@ -49,8 +48,8 @@ const changePlayer = () => {
   player2El.classList.toggle('player--active');
 
   // Select current player's element. Get ready to update next player's el
-  scoreboard = document.querySelector(`#current-score--${currentPlayer}`);
-  totalScoreboard = document.querySelector(`#score--${currentPlayer}`);
+  scoreboardEl = document.querySelector(`#current-score--${currentPlayer}`);
+  totalScoreboardEl = document.querySelector(`#score--${currentPlayer}`);
 };
 
 // Click roll a dice button
@@ -63,11 +62,12 @@ btnRoll.addEventListener('click', function () {
 
   // Change the image of dice
   img.src = `./images/dice-${dice}.png`;
+  img.classList.remove('invisible');
 
   if (dice !== 1) {
     // Display/update current scores
     currentScore += dice;
-    scoreboard.textContent = currentScore;
+    scoreboardEl.textContent = currentScore;
   } else {
     //Change player if the dice was 1
     changePlayer();
@@ -77,6 +77,9 @@ btnRoll.addEventListener('click', function () {
 function gameover() {
   btnRoll.disabled = true;
   btnHold.disabled = true;
+  img.classList.add('invisible');
+
+  //visual change
   const playerEl = document.querySelector(`.player--${winner}`);
   playerEl.classList.add('player--winner');
   confettiEl.classList.remove('invisible');
@@ -87,10 +90,10 @@ btnHold.addEventListener('click', function () {
   // Add current scores to a total score
   if (currentPlayer === 0) {
     scorePlayer1 += currentScore;
-    totalScoreboard.textContent = scorePlayer1;
+    totalScoreboardEl.textContent = scorePlayer1;
   } else {
     scorePlayer2 += currentScore;
-    totalScoreboard.textContent = scorePlayer2;
+    totalScoreboardEl.textContent = scorePlayer2;
   }
 
   // Check a winner
