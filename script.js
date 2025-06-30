@@ -63,6 +63,9 @@ btnRoll.addEventListener('click', function () {
 function gameover() {
   btnRoll.disabled = true;
   btnHold.disabled = true;
+  const playerEl = document.querySelector(`.player--${winner}`);
+  playerEl.classList.add('player--winner');
+  confettiEl.classList.remove('invisible');
 }
 
 // Click hold button
@@ -79,13 +82,9 @@ btnHold.addEventListener('click', function () {
   // Check a winner
   if (scorePlayer1 >= 10) {
     winner = 0;
-    player1El.classList.add('player--winner');
-    confettiEl.classList.remove('invisible');
     gameover();
   } else if (scorePlayer2 >= 10) {
     winner = 1;
-    player2El.classList.add('player--winner');
-    confettiEl.classList.remove('invisible');
     gameover();
   }
   changePlayer();
