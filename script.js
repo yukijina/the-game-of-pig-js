@@ -10,9 +10,9 @@ let scoreboard = document.querySelector(`#current-score--${currentPlayer}`);
 let totalScoreboard = document.querySelector(`#score--${currentPlayer}`);
 let winner;
 const confettiEl = document.querySelector('.confetti');
-
 const player1El = document.querySelector('.player--0');
 const player2El = document.querySelector('.player--1');
+const img = document.querySelector('.img--dice');
 // let scoreEl1 = document.querySelector('#score--0');
 // let scoreEl2 = document.querySelector('#score--1');
 // let currentScoreBoard1 = document.getElementById('current-score--0');
@@ -20,7 +20,22 @@ const player2El = document.querySelector('.player--1');
 
 // New Game
 btnNew.addEventListener('click', function () {
-  console.log('new game clicked');
+  btnRoll.disabled = false;
+  btnHold.disabled = false;
+  const playerEl = document.querySelector(`.player--${winner}`);
+  playerEl.classList.remove('player--winner');
+  confettiEl.classList.add('invisible');
+
+  currentPlayer = 0;
+  currentScore = 0;
+  scorePlayer1 = 0;
+  scorePlayer2 = 0;
+  img.src = `./images/dice-1.png`;
+
+  let scoreEl1 = document.querySelector('#score--0');
+  let scoreEl2 = document.querySelector('#score--1');
+  scoreEl1.textContent = 0;
+  scoreEl2.textContent = 0;
 });
 
 const changePlayer = () => {
@@ -47,7 +62,6 @@ btnRoll.addEventListener('click', function () {
   let dice = Math.trunc(Math.random() * 6) + 1;
 
   // Change the image of dice
-  const img = document.querySelector('.img--dice');
   img.src = `./images/dice-${dice}.png`;
 
   if (dice !== 1) {
