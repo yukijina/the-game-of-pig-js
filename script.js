@@ -55,6 +55,7 @@ btnRoll.addEventListener('click', function () {
 
   // Change the image of dice
   img.src = `./images/dice-${dice}.png`;
+  img.alt = `dice ${dice}`;
   img.classList.remove('invisible');
 
   if (dice !== 1) {
