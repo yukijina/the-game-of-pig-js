@@ -74,7 +74,7 @@ main {
   font-size: 4rem;
   position: absolute;
   top: 8rem;
-  animation: confetti-fall linear 5s 1;
+  animation: confetti-fall 5s linear 1;
 }
 
 .score {
@@ -159,5 +159,61 @@ main {
   }
   100% {
     transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+@media (max-width: 800px) {
+  main {
+    height: 100rem;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  .player {
+    width: 100%;
+  }
+
+  .img {
+    width: 8rem;
+    height: 8rem;
+    top: 46rem;
+  }
+
+  .btn--new {
+    top: 47.6rem;
+    left: 1rem;
+  }
+
+  .btn--roll {
+    bottom: 50.4rem;
+    right: 1rem;
+  }
+
+  .btn--hold {
+    bottom: 44.8rem;
+    right: 1rem;
+  }
+
+  .confetti {
+    animation: confetti-fall 5s linear 1 forwards;
+  }
+}
+
+@media (max-width: 453px) {
+  .btn {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+  }
+
+  .btn--new {
+    top: 48.2rem;
+  }
+
+  .btn--roll {
+    bottom: 50.4rem;
+  }
+
+  .btn--hold {
+    bottom: 45.8rem;
   }
 }
