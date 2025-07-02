@@ -10,7 +10,7 @@ Coded with vanilla JavaScript
 
 ### Objective:
 
-Be the first player to reach a target score, typically 100 points.
+Be the first player to reach a target score, typically 50 points.
 
 ### How to Play
 
