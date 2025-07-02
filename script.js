@@ -116,11 +116,11 @@ btnHold.addEventListener('click', function () {
   }
 
   // Check a winner
-  if (scores[0] >= 10) {
+  if (scores[0] >= 50) {
     winner = 0;
     player1El.classList.add('player--active');
     gameover();
-  } else if (scores[1] >= 10) {
+  } else if (scores[1] >= 50) {
     winner = 1;
     player1El.classList.remove('player--active');
     gameover();
