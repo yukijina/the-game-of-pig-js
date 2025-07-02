@@ -58,7 +58,7 @@ main {
 }
 
 .player--active {
-  background-color: rgba(182, 197, 214, 0.502);
+  background-color: rgba(182, 197, 214, 0.6);
 }
 
 .player--winner {
